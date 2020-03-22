@@ -17,3 +17,13 @@ fn main() {
 
 
 }
+
+
+#[cfg(test)]
+mod test_oxy2fa {
+
+    #[test]
+    fn something() {
+
+    }
+}
