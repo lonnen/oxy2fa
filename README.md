@@ -8,19 +8,16 @@ In order to effectively generate time-based (TOTP) codes, which are the default,
 
 Usage:
 
-    $ oxy2fa
-    761163 name1
+    $ oxy2fa tokens
+    970914 name1
 
-    $ oxy2fa -add name2
-    2fa key for name2: ksjfu82hrasdf434
+    $ oxy2fa add name2 ksjfu82hrasdf434
+    Added 2fa key for name2
 
-    $ oxy2fa -list
-    name1 name2
-
-    $ oxy2fa name2
+    $ oxy2fa tokens name2
     449903 name2
 
-    $ oxy2fa
+    $ oxy2fa tokens
     970914 name1
     943215 name2
 

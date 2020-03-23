@@ -1,23 +1,26 @@
 use structopt::StructOpt;
 
-#[derive(StructOpt)]
+#[derive(Debug, StructOpt)]
+#[structopt(name = "oxy2fa", about = "oxy2fa is a two-factor authentication agent.")]
 struct Cli {
-    pattern: String,
-    #[structopt(parse(from_os_str))]
-    path: std::path::PathBuf,
-}
-
-fn main() {
-    let pattern = std::env::args().nth(1).expect("no pattern given");
-    let path = std::env::args().nth(2).expect("no path given");
-    let args = Cli {
-        pattern: pattern,
-        path: std::path::PathBuf::from(path),
-    };
-
 
 }
 
+#[derive(StructOpt)]
+enum Command {
+    Keys {
+
+    },
+    Add {
+
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let args = Cli::from_args();
+    println!("{:?}", args);
+    Ok(())
+}
 
 #[cfg(test)]
 mod test_oxy2fa {
