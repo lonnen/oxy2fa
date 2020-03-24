@@ -10,8 +10,8 @@ struct Keychain {
 
 struct Key {
     raw: Vec<bool>,
-    digits: isize,
-    offset: isize,
+    digits: usize,
+    offset: usize,
 }
 
 impl Keychain {
@@ -30,7 +30,8 @@ impl Keychain {
 
     pub fn code(self, name: &String) -> &String {
         let key = self.keys.get(name).unwrap();
-        key.code(...)
+        key.code(self.data);
+        &String::from("asdf")
     }
 
 }
@@ -44,21 +45,11 @@ impl Key {
         }
     }
 
-    pub fn code<'a>(&'a self, n: &[bool]) -> &'a String {
+    pub fn code<'a>(&'a self, _n: Vec<bool>) -> &'a String {
         match self.offset {
-            0 => self.totp(self.raw, SystemTime::now(), self.digits),
-            _ => self.hotp(self.raw, n, self.digits),
+            0 => String::from("totp logic -> hotp logic"),
+            _ => String::from("hotp logic"),
         }
-    }
-
-    // time-based authentication codes
-    pub fn totp(self, time: SystemTime, digits: usize) -> self {
-        hotp( )
-    }
-
-    // counter-based authentication codes
-    pub fn hotp(self) -> self {
-
     }
 }
 
