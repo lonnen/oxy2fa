@@ -4,7 +4,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 const counterLen: usize = 20;
 struct Keychain {
     file: String,
-    data: Vec<bool>,
+    data: Vec<u8>,
     keys: HashMap<String, Key>,
 }
 
@@ -28,11 +28,11 @@ impl Keychain {
         self
     }
 
-    pub fn code(self, name: &String) -> &String {
-        let key = self.keys.get(name).unwrap();
-        key.code(self.data);
-        &String::from("asdf")
-    }
+    // pub fn code(self, name: &String) -> &String {
+    //     let key = self.keys.get(name).unwrap();
+    //     key.code(self.data);
+    //     &String::from("asdf")
+    // }
 
 }
 
@@ -45,11 +45,18 @@ impl Key {
         }
     }
 
-    pub fn code<'a>(&'a self, _n: Vec<bool>) -> &'a String {
-        match self.offset {
-            0 => String::from("totp logic -> hotp logic"),
-            _ => String::from("hotp logic"),
-        }
-    }
+    // pub fn code<'a>(&'a self, _n: Vec<u8>) -> &'a String {
+    //     match self.offset {
+    //         0 => &String::from("totp logic -> hotp logic"),
+    //         _ => &String::from("hotp logic"),
+    //     }
+    // }
 }
 
+// fn H -> (sha-1)
+// K: [u8]
+// d: usize between (6, 9.3) // 9.3 because digit 10 can only be decimal (0,2,3) or log(31, base=10)
+// C: counter of how many keys have been generated
+//
+// hmac
+//
