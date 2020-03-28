@@ -1,5 +1,9 @@
 # oxy2fa
 
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/tmd5xwpm9cg5vr4k/branch/master?svg=true)](https://ci.appveyor.com/project/lonnen/oxy2fa/branch/master)
+[![TravisCI Build Status](https://www.travis-ci.com/lonnen/oxy2fa.svg?branch=master)](https://www.travis-ci.com/lonnen/oxy2fa)
+
+
 A two-factor authentication agent.
 
 Unlike QR based software, this relies on text-based codes. When prompted with a QR code, look for an option to use a text code with you two-factor secret instead, which will be a short string of numbers and letters.
